@@ -1,12 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// import rain from "/assets/icons/rain.png";
-// import rainSun from "../dist/icons/rain-sun.png";
-// import segmentedCloud from "../dist/icons/segmented-cloud.png";
-// import sun from "../dist/icons/sun.png";
-// import lightning from "../dist/icons/lightning.png";
-
 import "swiper/css";
 import "./slider.css";
 
@@ -15,7 +9,6 @@ import "swiper/css/navigation";
 
 export default function Slider({ props, data}) {
   const ref = useRef();
-  // let data = status;
 
 
   const changeSlide = (element) => {
@@ -33,7 +26,6 @@ export default function Slider({ props, data}) {
     props(sliderValue);
   };
 
-  console.log(data,"status");
 
   return (
     <>
