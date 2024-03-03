@@ -16,7 +16,6 @@ const fetchData = (cityName) => {
       return resData;
     })
     .catch((error) => console.log(error));
-    console.log(cityName);
   return data;
 };
 
