@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -14,12 +14,6 @@ export default function Slider({ props, data }) {
     ref.current.swiper.slideTo(element.currentTarget.swiperSlideIndex);
   };
 
-  const activeIndex = () => {
-    const activeValue = ref.current.swiper.activeIndex;
-    setSliderValue(activeValue);
-  };
-
-  const [sliderValue, setSliderValue] = useState();
 
   return (
     <>
@@ -37,16 +31,15 @@ export default function Slider({ props, data }) {
         initialSlide={2}
         className="mySwiper"
         ref={ref}
-        onSlideChange={activeIndex}
       >
         <SwiperSlide
           onClick={(e) => {
             changeSlide(e);
           }}
         >
-          <h5>{data && data.list[5].weather[0].main}</h5>
+          <h5>{data.list[5].weather[0].main}</h5>
           <img
-            src={`/assets/img/${data && data.list[5].weather[0].main}.png`}
+            src={`/assets/img/${data.list[5].weather[0].main}.png`}
             alt="sun"
           />
         </SwiperSlide>
@@ -56,9 +49,9 @@ export default function Slider({ props, data }) {
             changeSlide(e);
           }}
         >
-          <h5>{data && data.list[17].weather[0].main}</h5>
+          <h5>{data.list[17].weather[0].main}</h5>
           <img
-            src={`/assets/img/${data && data.list[17].weather[0].main}.png`}
+            src={`/assets/img/${data.list[17].weather[0].main}.png`}
             alt="sun"
           />
         </SwiperSlide>
@@ -68,9 +61,9 @@ export default function Slider({ props, data }) {
             changeSlide(e);
           }}
         >
-          <h5>{data && data.list[20].weather[0].main}</h5>
+          <h5>{data.list[20].weather[0].main}</h5>
           <img
-            src={`/assets/img/${data && data.list[20].weather[0].main}.png`}
+            src={`/assets/img/${data.list[20].weather[0].main}.png`}
             alt="sun"
           />
         </SwiperSlide>
@@ -80,9 +73,9 @@ export default function Slider({ props, data }) {
             changeSlide(e);
           }}
         >
-          <h5>{data && data.list[30].weather[0].main}</h5>
+          <h5>{data.list[30].weather[0].main}</h5>
           <img
-            src={`/assets/img/${data && data.list[30].weather[0].main}.png`}
+            src={`/assets/img/${data.list[30].weather[0].main}.png`}
             alt="sun"
           />
         </SwiperSlide>
@@ -92,9 +85,9 @@ export default function Slider({ props, data }) {
             changeSlide(e);
           }}
         >
-          <h5>{data && data.list[35].weather[0].main}</h5>
+          <h5>{data.list[35].weather[0].main}</h5>
           <img
-            src={`/assets/img/${data && data.list[35].weather[0].main}.png`}
+            src={`/assets/img/${data.list[35].weather[0].main}.png`}
             alt="sun"
           />
         </SwiperSlide>

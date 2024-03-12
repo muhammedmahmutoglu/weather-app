@@ -6,7 +6,7 @@ function App({props}) {
 
   return (
   <UseProvider>
-      <Home></Home>
+      <Home/>
   </UseProvider>
   )
 }

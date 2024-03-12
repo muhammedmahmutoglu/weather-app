@@ -3,9 +3,7 @@ import React from 'react'
 import { useContext } from 'react';
 import { userContext } from "../context/userContext";
 
-
-
-const City = () => {
+const CityList = () => {
     const context = useContext(userContext);
 
 
@@ -100,4 +98,4 @@ const City = () => {
   )
 }
 
-export default City
+export default CityList

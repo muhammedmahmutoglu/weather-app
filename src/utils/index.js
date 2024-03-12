@@ -19,4 +19,20 @@ const fetchData = (cityName) => {
   return data;
 };
 
-export { kelvinToCelsius , fetchData };
+const calculateDay = (value) => {
+  let day = 0;
+  if (value < 1) {
+    day = 5;
+  } else if (value < 2) {
+    day = 17;
+  } else if (value < 3) {
+    day = 20;
+  } else if (value < 4) {
+    day = 30;
+  } else if (value < 5) {
+    day = 35;
+  }
+  return day;
+};
+
+export { kelvinToCelsius, fetchData, calculateDay };

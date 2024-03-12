@@ -3,64 +3,56 @@ import React, { useContext, useEffect, useState } from "react";
 import { userContext } from "../context/userContext";
 
 import Slider from "../compnents/Slider";
-import { fetchData, kelvinToCelsius } from "../utils";
-import City from "../compnents/City";
+import { calculateDay, fetchData, kelvinToCelsius } from "../utils";
 
-import "../reset.css";
-import "../main.css";
+import "../css/reset.css";
+import "../css/main.css";
+import CityList from "../compnents/CityList";
 
-function Home({ props }) {
-  let [data, setData] = useState();
+function Home() {
+  const [data, setData] = useState();
+  const value = 1;
+
   const context = useContext(userContext);
 
   useEffect(() => {
     fetchData(context.data).then((res) => setData(res));
   }, [context]);
 
-  const [value, setValue] = useState();
+  const image = data && data.list[calculateDay(value)].weather[0].main;
 
-  const comingValue = (sliderValue) => {
-    setValue(sliderValue);
-  };
+  const situation = data && data.list[calculateDay(value)].weather[0].main;
 
-  let day = 0;
-
-  if (value < 1) {
-    day = 5;
-  } else if (value < 2) {
-    day = 17;
-  } else if (value < 3) {
-    day = 20;
-  } else if (value < 4) {
-    day = 30;
-  } else if (value < 5) {
-    day = 35;
-  }
-  const image = data && data.list[day].weather[0].main;
-
-  let situation = data && data.list[day].weather[0].main;
-
-  return (
-    <div className="App">
+  const renderWeatherComponent = () => {
+    return (
       <div className={`main ${situation}`}>
         <header>
           <img src={"/assets/img/Vector.png"} alt="lacation" />
-          <City />
+          <CityList />
         </header>
 
         <div className="middle">
-          <h4>{data && data.list[day].weather[0].main}</h4>
-          <img src={image && `assets/img/${image}.png`} alt="" />
-          <span>
-            {data &&
-              data.list.length > 0 &&
-              kelvinToCelsius(data.list[day].main.temp) + "°C"}
-          </span>
+          <h4>{data.list[calculateDay(value)].weather[0].main} </h4>
+          <img src={`assets/img/${image}.png`} alt="" />
+          {data.length > 0 && (
+            <span>
+              {" "}
+              {kelvinToCelsius(data.list[calculateDay(value)].main.temp) + "°C"}
+            </span>
+          )}
 
-          <p> {data && data.list[day].dt_txt.slice(0, 10)} </p>
+          <p>{data.list[calculateDay(value)].dt_txt.slice(0, 10)} </p>
         </div>
-        <Slider props={comingValue} data={data} />
+        <Slider data={data} />
       </div>
+    );
+  };
+  const renderLoderComponent = () => {
+    return <p style={{ color: "black" }}>loding...</p>;
+  };
+  return (
+    <div className="App">
+      {data ? renderWeatherComponent() : renderLoderComponent()}
     </div>
   );
 }
